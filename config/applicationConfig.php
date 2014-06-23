@@ -25,7 +25,7 @@ require_once './php/Application.php';
 
 
 // debugging
-//error_reporting(E_ALL);
+error_reporting(E_ALL);
 //set_error_handler( array( 'Error', 'captureNormal' ) );
 //register_shutdown_function( array( 'Error', 'captureShutdown' ) );
 

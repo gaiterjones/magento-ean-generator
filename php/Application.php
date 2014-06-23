@@ -12,7 +12,7 @@
  *	usage - browser http://blah.com/ean.php?export
  			command line php ean.php debug
  *
- * 	VERSION 1.02 10.02.2014 
+ * 	VERSION 1.03 23.06.2014 
 	http://www.gs1.org/barcodes/technical/idkeys/gtin
  */
 
@@ -53,6 +53,7 @@ class Application
 		$_seperator=','; // COMMA
 		
 		$_eanPrefix=$this->get('eanprefix');
+		
 		$_eanPrefixLength=strlen($_eanPrefix);
 		
 		$_products=$this->get('collection');
@@ -62,7 +63,7 @@ class Application
 			$_sku = $_product->getSku();
 			$_ean=Application_Helper_Data::ean13CheckDigit($_eanPrefix. str_pad($_id, (12 - $_eanPrefixLength), "0", STR_PAD_LEFT)); // generate ean13, pad product id to available digits
 
-			if (strlen($_eanPrefix) != 13) throw new exception ('Generated EAN13 incorrect length.');
+			if (strlen($_ean) != 13) throw new exception ('Generated EAN13 incorrect length.');
 			
 			$_data[] = array(
 							$_sku,
